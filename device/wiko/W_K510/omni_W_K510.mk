@@ -21,16 +21,16 @@ $(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/embedded.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# Inherit from W-K510 device
-$(call inherit-product, device/wiko/W-K510/device.mk)
+# Inherit from W_K510 device
+$(call inherit-product, device/wiko/W_K510/device.mk)
 
 # Inherit some common Omni stuff.
 $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, vendor/omni/config/gsm.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := W-K510
-PRODUCT_NAME := omni_W-K510
+PRODUCT_DEVICE := W_K510
+PRODUCT_NAME := omni_W_K510
 PRODUCT_BRAND := WIKO
 PRODUCT_MODEL := W-K510-EEA
 PRODUCT_MANUFACTURER := wiko
