@@ -31,20 +31,30 @@ jobs:
           repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-9.0 --depth=1
           repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
-      - name: Clone Device Tree and Rename Makefile
+      - name: Clone Device Tree and Fix Makefiles
         run: |
           cd twrp
           git clone ${{ github.server_url }}/${{ github.repository }}.git -b main device/wiko/W_K510
-          if [ -f device/wiko/W_K510/omni_W-K510.mk ]; then
-            mv device/wiko/W_K510/omni_W-K510.mk device/wiko/W_K510/omni_W_K510.mk
+          cd device/wiko/W_K510
+          
+          # Se il file si chiama omni_W-K510.mk (col trattino), crea la copia col trattino basso
+          if [ -f omni_W-K510.mk ]; then
+            cp omni_W-K510.mk omni_W_K510.mk
+          elif [ -f omni_W_K510.mk ]; then
+            cp omni_W_K510.mk omni_W-K510.mk
           fi
+
+          # Corregge i riferimenti dentro AndroidProducts.mk e nei file .mk
+          sed -i 's/omni_W-K510/omni_W_K510/g' AndroidProducts.mk 2>/dev/null || true
+          sed -i 's/omni_W-K510/omni_W_K510/g' omni_W_K510.mk 2>/dev/null || true
+          sed -i 's/omni_W-K510/omni_W_K510/g' omni_W-K510.mk 2>/dev/null || true
 
       - name: Build Recovery
         run: |
           cd twrp
           source build/envsetup.sh
           export ALLOW_MISSING_DEPENDENCIES=true
-          lunch omni_W_K510-eng || lunch omni_W_K510-userdebug
+          lunch omni_W_K510-eng || lunch omni_W_K510-userdebug || lunch omni_W-K510-eng || lunch omni_W-K510-userdebug
           make recoveryimage -j$(nproc --all)
 
       - name: Upload Recovery Artifact
