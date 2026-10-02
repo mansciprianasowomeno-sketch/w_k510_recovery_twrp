@@ -16,5 +16,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo omni_W-K510-userdebug
-add_lunch_combo omni_W-K510-eng
+add_lunch_combo omni_W_K510-eng
+add_lunch_combo omni_W_K510-userdebug
