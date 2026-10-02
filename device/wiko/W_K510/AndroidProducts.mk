@@ -17,4 +17,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-     $(LOCAL_DIR)/omni_W-K510.mk
+    $(LOCAL_DIR)/omni_W_K510.mk
