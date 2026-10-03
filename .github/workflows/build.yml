@@ -15,7 +15,10 @@ jobs:
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo dpkg --add-architecture i386
           sudo apt-get update
-          sudo apt-get install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf libxml2-utils xsltproc zip zlib1g-dev libncurses5-dev libncurses5 python3 python-is-python3
+          sudo apt-get install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf libxml2-utils xsltproc zip zlib1g-dev libncurses5-dev libncurses5 python2 python2-dev python3 python-is-python3
+          
+          # Forza il comando 'python' a puntare a Python 2 per la compatibilità con TWRP 9.0
+          sudo ln -sf /usr/bin/python2 /usr/bin/python
 
       - name: Install Repo
         run: |
@@ -53,4 +56,5 @@ jobs:
           name: TWRP_Wiko_Y60
           path: |
             twrp/out/target/product/W_K510/recovery.img
+            twrp/out/target/product/W_K510/*.imgg
             twrp/out/target/product/W_K510/*.img
