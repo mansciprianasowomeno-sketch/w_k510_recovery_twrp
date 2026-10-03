@@ -34,7 +34,10 @@ jobs:
       - name: Clone Device Tree
         run: |
           cd twrp
-          git clone ${{ github.server_url }}/${{ github.repository }}.git -b main device/wiko/W_K510
+          git clone ${{ github.server_url }}/${{ github.repository }}.git -b main device_temp
+          mkdir -p device/wiko/W_K510
+          cp -r device_temp/device/wiko/W_K510/* device/wiko/W_K510/
+          rm -rf device_temp
 
       - name: Build Recovery
         run: |
