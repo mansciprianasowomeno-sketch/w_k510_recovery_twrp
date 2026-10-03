@@ -18,3 +18,7 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/omni_W_K510.mk
+
+COMMON_LUNCH_CHOICES := \
+    omni_W_K510-eng \
+    omni_W_K510-userdebug
