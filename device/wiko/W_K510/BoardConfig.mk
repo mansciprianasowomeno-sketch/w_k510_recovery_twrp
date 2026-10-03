@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/wiko/W-K510
+DEVICE_PATH := device/wiko/W_K510
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -29,7 +29,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := generic
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := W-K510
+TARGET_OTA_ASSERT_DEVICE := W_K510,W-K510
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -58,8 +58,8 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_HEADER_ARCH := arm
-TARGET_KERNEL_SOURCE := kernel/wiko/W-K510
-TARGET_KERNEL_CONFIG := W-K510_defconfig
+TARGET_KERNEL_SOURCE := kernel/wiko/W_K510
+TARGET_KERNEL_CONFIG := W_K510_defconfig
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6739
