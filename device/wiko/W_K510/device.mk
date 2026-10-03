@@ -16,5 +16,14 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/wiko/W-K510
+LOCAL_PATH := device/wiko/W_K510
 
+# Architecture
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_VARIANT := generic
+
+# Get prebuilt binaries
+$(call inherit-product-if-exists, $(LOCAL_DIR)/prebuilt/AndroidProducts.mk)
